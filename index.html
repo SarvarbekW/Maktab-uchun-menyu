@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧑‍🍳Maktab Oshxonasi Menyu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-utensils"></i>
+                    <h1>Maktab<span>Oshxonasi</span></h1>
+                </div>
+                <p class="tagline">O'quvchilar va oshpazlar uchun boshqaruv tizimi</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Kirish qismi -->
+        <section id="authSection" class="auth-section">
+            <!-- O'quvchilar kirish -->
+            <div class="auth-card">
+                <div class="card-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2>O'quvchi Kirish</h2>
+                <form id="studentLoginForm">
+                    <div class="form-group">
+                        <label for="studentLogin">F.I.SH</label>
+                        <input type="text" id="studentLogin" placeholder="Ism Familiya" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPassword">Parol</label>
+                        <input type="password" id="studentPassword" placeholder="Parol" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-sign-in-alt"></i> Kirish
+                    </button>
+                    <p class="auth-link">
+                        Hisobingiz yo'qmi? <a href="#" id="showStudentRegister">Ro'yxatdan o'tish</a>
+                    </p>
+                </form>
+
+                <form id="studentRegisterForm" class="hidden">
+                    <div class="card-icon">
+                        <i class="fas fi-rs-restaurant"></i>
+                        
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2>O'quvchi Ro'yxatdan o'tish</h2>
+                    <div class="form-group">
+                        <label for="studentRegName">F.I.SH</label>
+                        <input type="text" id="studentRegName" placeholder="To'liq ism" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentRegGrade">Sinf</label>
+                        <select id="studentRegGrade" required>
+                            <option value="">Tanlang</option>
+                            <option value="1-4">1-4 sinf</option>
+                            <option value="5-8">5-8 sinf</option>
+                            <option value="9-11">9-11 sinf</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentRegPassword">Parol</label>
+                        <input type="password" id="studentRegPassword" placeholder="Parol tanlang" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-user-check"></i> Ro'yxatdan o'tish
+                    </button>
+                    <p class="auth-link">
+                        Hisobingiz bormi? <a href="#" id="showStudentLogin">Kirish</a>
+                    </p>
+                </form>
+            </div>
+
+            <!-- Oshpazlar kirish -->
+            <div class="auth-card">
+                <div class="card-icon">
+                    <img src="./restaurant .png" alt="">
+                    <i class="fas fa-chef-hat"></i>
+                </div>
+                <h2>Oshpaz Kirish</h2>
+                <form id="chefLoginForm">
+                    <div class="form-group">
+                        <label for="chefLogin">Login</label>
+                        <input type="text" id="chefLogin" placeholder="Oshpaz logini" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="chefPassword">Parol</label>
+                        <input type="password" id="chefPassword" placeholder="Parol" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">
+                        <i class="fas fa-sign-in-alt"></i> Kirish
+                    </button>
+                    <div class="test-info">
+                        <i class="fas fa-info-circle"></i>
+                        Test ma'lumot: login: <strong>oshpaz</strong>, parol: <strong>12345</strong>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- O'quvchilar paneli -->
+        <section id="studentDashboard" class="dashboard hidden">
+            <!-- Dashboard header -->
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div >
+                        <h2>Salom, <span id="studentName"></span>!</h2>
+                        <p class="user-meta">
+                            <i class="fas fa-school"></i> Sinf: <span id="studentClass"></span>
+                            <span class="divider">|</span>
+                            <i class="fas fa-calendar"></i> <span id="currentDate"></span>
+                        </p>
+                    </div>
+                </div>
+                <button id="studentLogout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Chiqish
+                </button>
+            </div>
+
+            <!-- Savat -->
+            <div class="cart-section">
+                <h3><i class="fas fa-shopping-cart"></i> Savat</h3>
+                <div class="cart-container">
+                    <div class="cart-items" id="selectedItemsList">
+                        <div class="empty-state">
+                            <i class="fas fa-shopping-cart"></i>
+                            <p>Savat bo'sh</p>
+                            <small>Menyudan mahsulot tanlang</small>
+                        </div>
+                    </div>
+                    <div class="cart-summary">
+                        <div class="summary-row">
+                            <span>Jami summa:</span>
+                            <span class="total" id="cartTotal">0 so'm</span>
+                        </div>
+                        <div class="cart-actions">
+                            <button id="placeOrderBtn" class="btn btn-success" disabled>
+                                <i class="fas fa-paper-plane"></i> Buyurtma berish
+                            </button>
+                            <button id="clearCartBtn" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Tozalash
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menyu filtrlari -->
+            <div class="menu-filters">
+                <button class="filter-btn active" data-category="all">
+                    <i class="fas fa-list"></i> Barchasi
+                </button>
+                <button class="filter-btn" data-category="food">
+                    <i class="fas fa-utensils"></i> Ovqatlar
+                </button>
+                <button class="filter-btn" data-category="drink">
+                    <i class="fas fa-wine-glass"></i> Ichimliklar
+                </button>
+            </div>
+
+            <!-- Menyu -->
+            <div class="menu-section">
+                <h3><i class="fas fa-utensils"></i> Menyu</h3>
+                <div class="menu-grid" id="menuItems">
+                    <!-- Menyu elementlari yuklanadi -->
+                </div>
+            </div>
+
+            <!-- Buyurtmalar tarixi -->
+            <div class="orders-section">
+                <h3><i class="fas fa-history"></i> Mening buyurtmalarim</h3>
+                <div class="orders-list" id="studentOrders">
+                    <div class="empty-state">
+                        <i class="fas fa-clipboard-list"></i>
+                        <p>Hali buyurtma bermagansiz</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Oshpazlar paneli -->
+        <section id="chefDashboard" class="dashboard hidden">
+            <!-- Dashboard header -->
+            <div class="dashboard-header">
+                <div class="user-info">
+                    <div class="user-avatar chef">
+                        <i class="fas fa-chef-hat"></i>
+                    </div>
+                    <div>
+                        <h2>Oshpaz paneli</h2>
+                        <p class="user-meta">
+                            <i class="fas fa-user"></i> <span id="chefName"></span>
+                            <span class="divider">|</span>
+                            <i class="fas fa-clock"></i> <span id="chefTime"></span>
+                        </p>
+                    </div>
+                </div>
+                <button id="chefLogout" class="btn btn-outline">
+                    <i class="fas fa-sign-out-alt"></i> Chiqish
+                </button>
+            </div>
+
+            <!-- Buyurtmalar -->
+            <div class="orders-management">
+                <h3><i class="fas fa-concierge-bell"></i> Yangi buyurtmalar</h3>
+                <div class="orders-grid" id="chefOrders">
+                    <div class="empty-state">
+                        <i class="fas fa-check-circle"></i>
+                        <p>Hozircha yangi buyurtmalar yo'q</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Maktab Oshxonasi Boshqaruv Tizimi &copy; 2026</p>
+            <p class="footer-info">Barcha huquqlar himoyalangan</p>
+            <h4>Sh.Sarvarbek</h4>
+        </div>
+    </footer>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
